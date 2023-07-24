@@ -1,3 +1,3 @@
-function goToHighScores() {
-    window.location.href = "highscores.html"
+function viewHighScores() {
+    window.location.href = "highScores.html";
 }
