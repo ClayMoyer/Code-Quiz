@@ -1,7 +1,7 @@
-let question = $("#question");
+let questionText = $("#questionText");
 let timer = $("#timer");
 let answerChoices = $("#answerChoices");
-let startButton = $("#startButton");
+let beginQuiz = $("#beginQuiz");
 let quizHead = $("#quizHead");
 let scoreList = $("#scoreList");
 let timeRemaining = 60;
@@ -19,15 +19,15 @@ class Question {
         this.choices = [answerA, answerB, answerC, correctAnswer];
         this.correctAnswer = correctAnswer;
     }
-    setQuestion() {
-        question.text(this.question);
+    setQuestionText() {
+        questionText.text(this.question);
     }
     setAnswerChoices() {
         answerChoices.empty();
         answerChoices.off();
-        this.options.sort((a, b) => Math.floor(Math.random() * this.options.length));
+        this.choices.sort((a, b) => 0.5 - Math.random());
         //double check functionality
-    this.options.forEach(ans => {
+    this.choices.forEach(answer => {
         let answerEl = $('<li>');
         let answerElButton = $('<button>')
         answerElButton.text(answer);
@@ -43,10 +43,10 @@ let questionTwo = new Question("Commonly used data types DO NOT include:", "Stri
 let questionThree = new Question("The condition in an if/else statement is enclosed with ________.", "Quotes", "Curly Brackets", "Square Brackets", "Parenthesis");
 let questionFour = new Question("A very useful tool used during developmetn and debugging for printing content to the debugger is:", "JavaScript", "Terminal/Bash", "For Loops", "console.log");
 let questionFive = new Question("String values must be enclosed within ______ when being assigned variables.", "Commas", "Curly Brackets", "Parenthesis", "Quotes");
-quizList = [questionOne, questionTwo, questionThree, questionFour, questionFive];
+questionList = [questionOne, questionTwo, questionThree, questionFour, questionFive];
 
 function startQuiz() {
-    startQuiz.remove();
+    beginQuiz.remove();
     $('#introduction').empty();
     activeQuestion = 0;
     askQuestion(activeQuestion);
@@ -63,41 +63,40 @@ function startQuiz() {
 }
 
 function endQuiz() {
-    score = timeLeft;
+    score = timeRemaining;
     timer.empty();
     clearInterval(timeout);
-    question.empty();
-    question.text("All done!");
+    questionText.empty();
+    questionText.text("All done!");
     answerChoices.empty();
-    startButton.remove();
+    beginQuiz.remove();
     $('#introduction').text("Your final score is " + score);
 
-    enterInits.attr("type","text");
-    enterInits.attr("id","initsInput");
-    enterInits.attr("placeholder", "Enter Your Initials")
+    submitInits.attr("type","text");
+    submitInits.attr("id","initsInput");
+    submitInits.attr("placeholder", "Enter Your Initials")
     quizHead.append(submitInits);
 
     submitScore.text("Submit");
     submitScore.addClass("btn");
-    submitScore.attr("onclick","submitScore()")
+    submitScore.attr("onclick","sendScore()")
     quizHead.append(submitScore);
 }
 
 function askQuestion(questionNumber) {
-    quizList[questionNumber].setQuestion();
-    quizList[questionNumber].setAnswerChoices();
+    questionList[questionNumber].setQuestionText();
+    questionList[questionNumber].setAnswerChoices();
     answerChoices.on("click", "button", event => {
         selected = $(event.target);
         activeQuestion++;
 
-        if(selected.text() != quizList[questionNumber].correctAnswer){
-            timeLeft > 10 ? timeLeft -= 10 : timeLeft = 0;
+        if(selected.text() != questionList[questionNumber].correctAnswer){
+            timeRemaining > 10 ? timeRemaining -= 10 : timeRemaining = 0;
         }
 
-        //checks if the last question has been reached and ends the quiz, otherwise it proceeds to the next question
-        if(activeQuestion == quizList.length){
+        if(activeQuestion == questionList.length){
             endQuiz();
-        } else if(activeQuestion < quizList.length) {
+        } else if(activeQuestion < questionList.length) {
             askQuestion(activeQuestion);
         }
         

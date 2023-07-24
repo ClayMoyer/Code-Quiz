@@ -16,20 +16,22 @@
         <h1 id="timer">Time:</h1>
     </header>
     <main>
-        <section id="scoreList">
+        <!-- <section id="scoreList">
             <h1>High Scores</h1>
             <ol id="orderedScoreList">
             </ol>
             <button id="goBack">Go back</button>
             <button id="clearScores">Clear high scores</button>
-        </section>
-        <section id="quizHead" data-visible="true">
-            <h1>Coding Quiz</h1>
-            <p id="introduction">Try to answer the following code-related questions within the time limit.
-                Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-                <button id="startQuiz">Start Quiz</button>
+        </section> -->
+        <section id="quizHead">
+            <h1 id ="qustionText">Coding Quiz</h1>
+            <p id="introduction">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <ol id="answerChoices"></ol>
+
+            <button class="btn" id="beginQuiz" onclick="startQuiz()">Start Quiz</button>
         </section>
     </main>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
