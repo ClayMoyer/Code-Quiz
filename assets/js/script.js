@@ -1,7 +1,7 @@
 let question = $("#question");
 let timer = $("#timer");
 let answerChoices = $("#answerChoices");
-let startButton = $("#startButton");
+let startQuiz = $("#startQuiz");
 let quizHead = $("#quizHead");
 let scoreList = $("#scoreList");
 let timeRemaining = 60;
@@ -69,7 +69,7 @@ function endQuiz() {
     question.empty();
     question.text("All done!");
     answerChoices.empty();
-    startButton.remove();
+    startQuiz.remove();
     $('#introduction').text("Your final score is " + score);
 
     enterInits.attr("type","text");
