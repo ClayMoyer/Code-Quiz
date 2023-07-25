@@ -110,7 +110,7 @@ function sendScore() {
     }
     getHighScore.push(highScore);
     localStorage.setItem('highScores', JSON.stringify(getHighScore));
-    window.location.href = "highScores.html";
+    window.location.href = "./highScores.html";
 }
 
 function clearScores() {
@@ -118,20 +118,11 @@ function clearScores() {
     scoreList.empty();
 }
 
-//function to display the list of scores on the high score page
 function displayScores() {
     getHighScore.forEach((item) => {
         let scoreEl = $('<li>');
         scoreEl.text(item.inits + " - " + item.highScore);
         scoreList.append(scoreEl);
     });
-}
-
-function viewHighScores() {
-    window.location.href = "highScores.html";
-}
-
-function viewHome() {
-    window.location.href = "index.html";
 }
 
