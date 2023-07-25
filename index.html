@@ -10,28 +10,21 @@
 </head>
 <body>
     <header>
-        <h1>
-            <button class="viewHighScores" onclick="viewHighScores()" id="scoreButton">View High Scores</button>
-        </h1>
-        <h1 id="timer">Time:</h1>
+        <p id="viewHighScores" onclick="location.href = 'highScores.html'">View high scores</p>
+        <p id="timer">Time: 0</p>  
     </header>
     <main>
-        <!-- <section id="scoreList">
-            <h1>High Scores</h1>
-            <ol id="orderedScoreList">
-            </ol>
-            <button id="goBack">Go back</button>
-            <button id="clearScores">Clear high scores</button>
-        </section> -->
         <section id="quizHead">
-            <h1 id ="qustionText">Coding Quiz</h1>
+            <h1 id ="questionText">Coding Quiz</h1>
             <p id="introduction">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
             <ol id="answerChoices"></ol>
 
             <button class="btn" id="beginQuiz" onclick="startQuiz()">Start Quiz</button>
         </section>
     </main>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="MILqqfOltuE0yMBH2rpFoSi89R7b9VxCH253or6HkEw=%"
+    crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
